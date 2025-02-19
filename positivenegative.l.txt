@@ -1,0 +1,20 @@
+%{
+int positive=0,negative=0;
+%}
+
+%%
+^[-][0-9]+ {negative++;
+printf("negative=/n%s",yytext);}
+
+[0-9]+ {positive++;
+printf("positive=/n%s",yytext);}
+
+%%
+
+int yywrap(){}
+int main()
+{
+yylex();
+printf("number of positive numbers=%d","number of negative numbers=%d/n",positive,negative);
+return 0;
+}
